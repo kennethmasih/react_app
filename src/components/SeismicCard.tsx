@@ -8,8 +8,13 @@ import {
   Button,
 } from "@nextui-org/react";
 import { useState } from "react";
+// icons for magnitude
 import { RiEarthquakeFill } from "react-icons/ri";
 import { WiEarthquake } from "react-icons/wi";
+
+// icon for latitude
+import { PiCompass } from "react-icons/pi";
+
 
 import { getSeismicData } from "../api/actions";
 
@@ -84,16 +89,23 @@ const SeismicCard: React.FC = () => {
                 <WiEarthquake className="w-36 h-36" />
               </div>
             )}
-            <p className="text-3xl font-bold">{data.city}°C</p>
-            <div> 
-              
-            </div>
-            <p className="text-lg">Magnitude: {data.magnitude}%</p>
-            <p className="text-lg">Latitude: {data.latitude} km/h</p>
-            <p className="text-lg">Longitude: {data.longitude} %</p>
+             
+             
+         
+            <p className="text-lg">Magnitude: {data.magnitude}</p>
+            <div>
+               <PiCompass color='black' className="w-20 h-20" />
+             </div>
+            <p className="text-lg">Latitude: {data.latitude}°</p>
+            <div>
+               <PiCompass color='red' className="w-20 h-20" />
+             </div>
+
+            <p className="text-lg">Longitude: {data.longitude}°</p>
           </div>
         </CardBody>
       ) : (
+
         <CardBody>
           <div className="flex flex-col items-center">
             <p className="text-xl font-bold">Please enter a city</p>
