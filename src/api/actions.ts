@@ -2,17 +2,16 @@ import axios, { AxiosError } from "axios";
 
 const API_URL = "https://probable-invention-x5r59jqgj5gqhv67p-3000.app.github.dev/api";
 
-export const getWeatherData = async (city: string): Promise<WeatherData> => {
-  return new Promise<WeatherData>((resolve, reject) => {
+export const getSeismicData = async (city: string): Promise<SeismicData> => {
+  return new Promise<SeismicData>((resolve, reject) => {
     axios
-      .get(`${API_URL}/weather/${city}`)
+      .get(`${API_URL}/seismic/${city}`)
       .then((res) => {
         resolve({
           city: city,
-          temperature: res.data.temperature,
-          humidity: res.data.humidity,
-          wind: res.data.wind,
-          rain: res.data.rain,
+          magnitude: res.data.magnitude,
+          latitude: res.data.latitude,
+          longitude: res.data.longitude,
         });
       })
       .catch((error) => {

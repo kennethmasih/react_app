@@ -6,7 +6,7 @@ const NavBar = () => {
     <Navbar className="bg-slate-100 h-16">
       <NavbarBrand>
         <MdApi className="w-8 h-8 text-primary" />
-        <p className="font-bold text-inherit">Weather API</p>
+        <p className="font-bold text-inherit">Seismic API</p>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         {/* <NavbarItem>

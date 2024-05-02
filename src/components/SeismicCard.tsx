@@ -8,20 +8,22 @@ import {
   Button,
 } from "@nextui-org/react";
 import { useState } from "react";
-import { TiWeatherDownpour, TiWeatherSunny } from "react-icons/ti";
-import { getWeatherData } from "../api/actions";
+import { RiEarthquakeFill } from "react-icons/ri";
+import { WiEarthquake } from "react-icons/wi";
 
-const WeatherCard: React.FC = () => {
-  const [data, setData] = useState<WeatherData>();
+import { getSeismicData } from "../api/actions";
+
+const SeismicCard: React.FC = () => {
+  const [data, setData] = useState<SeismicData>();
   const [loadingState, setLoadingState] = useState(false);
   const [city, setCity] = useState("");
   const [error, setError] = useState("");
 
   const handleSearch = () => {
-    console.log("Fetching Weather Data...");
+    console.log("Fetching Seismic Data...");
     console.log(city);
     setLoadingState(true);
-    getWeatherData(city)
+    getSeismicData(city)
       .then((res) => {
         setError("");
         if (res) {
@@ -73,19 +75,22 @@ const WeatherCard: React.FC = () => {
         <CardBody>
           <div className="flex flex-col items-center">
             <h1 className="text-3xl font-bold">{data.city}</h1>
-            {data.temperature > 20 ? (
+            {data.magnitude > 20 ? (
               <div>
-                <TiWeatherSunny className="w-36 h-36" />
+                <RiEarthquakeFill className="w-36 h-36" />
               </div>
             ) : (
               <div>
-                <TiWeatherDownpour className="w-36 h-36" />
+                <WiEarthquake className="w-36 h-36" />
               </div>
             )}
-            <p className="text-3xl font-bold">{data.temperature}°C</p>
-            <p className="text-lg">Humidity: {data.humidity}%</p>
-            <p className="text-lg">Wind: {data.wind} km/h</p>
-            <p className="text-lg">Rain: {data.rain} %</p>
+            <p className="text-3xl font-bold">{data.city}°C</p>
+            <div> 
+              
+            </div>
+            <p className="text-lg">Magnitude: {data.magnitude}%</p>
+            <p className="text-lg">Latitude: {data.latitude} km/h</p>
+            <p className="text-lg">Longitude: {data.longitude} %</p>
           </div>
         </CardBody>
       ) : (
@@ -111,4 +116,4 @@ const WeatherCard: React.FC = () => {
   );
 };
 
-export default WeatherCard;
+export default SeismicCard;
